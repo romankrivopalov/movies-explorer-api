@@ -49,8 +49,6 @@ module.exports.login = (req, res, next) => {
 module.exports.createUser = (req, res, next) => {
   const {
     name,
-    about,
-    avatar,
     email,
     password,
   } = req.body;
@@ -59,8 +57,6 @@ module.exports.createUser = (req, res, next) => {
     .hash(password, 10)
     .then((hash) => userSchema.create({
       name,
-      about,
-      avatar,
       email,
       password: hash,
     }))
