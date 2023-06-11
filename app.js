@@ -26,6 +26,8 @@ const router = require('./routes');
 const { limiterSetting } = require('./utils/constants');
 // const { requestLogger, errorLogger } = require('./middlewares/logger');
 
+const { requestLogger, errorLogger } = require('./middlewares/logger');
+
 const { PORT = 3000, DB_ADDRESS = 'mongodb://127.0.0.1:27017/bitfilmsdb' } = process.env;
 
 // создание сервера
@@ -58,13 +60,13 @@ app.use(cookieParser());
 mongoose.connect(DB_ADDRESS, {});
 
 //
-// app.use(requestLogger);
+app.use(requestLogger);
 
 //
 app.use(router);
 
 //
-// app.use(errorLogger);
+app.use(errorLogger);
 
 //
 // app.use(handleError);
