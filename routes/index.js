@@ -19,6 +19,12 @@ router.use('/users', validateToken, usersRouter);
 router.use('/movies', validateToken, moviesRouter);
 router.use('/*', validateToken, (req, res, next) => next(new BadRequestError('This page not found')));
 
+router.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('The server is about to crash');
+  }, 0);
+});
+
 router.use(errors());
 
 module.exports = router;
