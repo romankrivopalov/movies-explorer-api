@@ -1,5 +1,9 @@
 const { NODE_ENV, JWT_SECRET } = process.env;
+
+// модуль для хеширования пароля
 const bcrypt = require('bcryptjs');
+
+// модуль для создания и подтверждения токенов
 const jwt = require('jsonwebtoken');
 const userSchema = require('../models/users');
 
