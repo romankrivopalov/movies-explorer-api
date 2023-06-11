@@ -7,9 +7,11 @@ const {
 const {
   getAllMovies,
   createMovie,
+  deleteMovie,
 } = require('../controllers/movie');
 
 movieRouter.get('/', getAllMovies);
 movieRouter.post('/', validateCreateMovie, createMovie);
+movieRouter.delete('/:cardId', deleteMovie);
 
 module.exports = movieRouter;
