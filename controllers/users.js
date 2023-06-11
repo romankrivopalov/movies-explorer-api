@@ -83,7 +83,7 @@ module.exports.createUser = (req, res, next) => {
 };
 
 module.exports.getUserById = (req, res, next) => {
-  const userId = req.params.id;
+  const userId = req.user._id;
 
   userSchema
     .findById(userId)
