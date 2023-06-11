@@ -1,7 +1,7 @@
 const movieRouter = require('express').Router();
 
 const {
-  validateCreateCard,
+  validateCreateMovie,
 } = require('../middlewares/celebrate');
 
 const {
@@ -10,7 +10,6 @@ const {
 } = require('../controllers/movie');
 
 movieRouter.get('/', getAllMovies);
-// movieRouter.post('/', validateCreateCard, createMovie);
-movieRouter.post('/', createMovie);
+movieRouter.post('/', validateCreateMovie, createMovie);
 
 module.exports = movieRouter;
