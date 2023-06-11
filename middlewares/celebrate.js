@@ -1,6 +1,13 @@
 const { celebrate, Joi } = require('celebrate');
 const { urlPattern } = require('../utils/constants');
 
+const validateUpdateUser = celebrate({
+  body: Joi.object().keys({
+    name: Joi.string().min(2).max(40),
+    email: Joi.string().required().email(),
+  }),
+});
+
 const validateCreateMovie = celebrate({
   body: Joi.object().keys({
     country: Joi.string().required(),
@@ -17,5 +24,6 @@ const validateCreateMovie = celebrate({
 });
 
 module.exports = {
+  validateUpdateUser,
   validateCreateMovie,
 };
