@@ -22,6 +22,9 @@ const mongoose = require('mongoose');
 // модуль для маршрутизации
 const router = require('./routes');
 
+// мидлвар обработки ошибок
+const handleError = require('./middlewares/handleError');
+
 // const handleError = require('./middlewares/handleError');
 const { limiterSetting } = require('./utils/constants');
 // const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -69,7 +72,7 @@ app.use(router);
 app.use(errorLogger);
 
 //
-// app.use(handleError);
+app.use(handleError);
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
