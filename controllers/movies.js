@@ -23,7 +23,6 @@ module.exports.createMovie = (req, res, next) => {
     image,
     trailerLink,
     thumbnail,
-    movieId,
     nameRU,
     nameEN,
   } = req.body;
@@ -39,11 +38,10 @@ module.exports.createMovie = (req, res, next) => {
       trailerLink,
       thumbnail,
       owner: req.user._id,
-      movieId,
       nameRU,
       nameEN,
     })
-    .then((card) => res.send(card))
+    .then((movie) => res.send(movie))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         return next(new NotFoundError('Invalid data when post card'));
