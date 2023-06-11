@@ -56,15 +56,15 @@ module.exports.deleteMovie = (req, res, next) => {
 
   movieSchema
     .findById(movieId)
-    .orFail(new BadRequestError(`Card Id: ${movieId} is not found`))
+    .orFail(new BadRequestError(`Movie Id: ${movieId} is not found`))
     .then((movie) => {
       if (movie.owner.toString() !== req.user._id) {
-        return next(new ForbiddenError("You can't delete someone else's card"));
+        return next(new ForbiddenError("You can't delete someone else's movie"));
       }
 
       return movie;
     })
-    .then((card) => movieSchema.deleteOne(card))
-    .then(() => res.status(200).send({ message: 'Card deleted' }))
+    .then((movie) => movieSchema.deleteOne(movie))
+    .then(() => res.status(200).send({ message: 'Movie deleted' }))
     .catch(next);
 };
