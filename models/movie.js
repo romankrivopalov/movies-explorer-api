@@ -16,8 +16,6 @@ const movieSchema = mongoose.Schema({
   },
   year: {
     type: Number,
-    minlength: 1,
-    maxlength: 4,
     required: true,
   },
   description: {
@@ -48,11 +46,6 @@ const movieSchema = mongoose.Schema({
   owner: {
     type: mongoose.Types.ObjectId,
     ref: 'user',
-    required: true,
-  },
-  movieId: {
-    type: mongoose.Types.ObjectId,
-    ref: 'movie',
     required: true,
   },
   nameRU: {
