@@ -9,7 +9,7 @@ const {
 module.exports.getAllMovies = (req, res, next) => {
   movieSchema
     .find({})
-    .then((cards) => res.send(cards.reverse()))
+    .then((movies) => res.send(movies.reverse()))
     .catch(next);
 };
 
@@ -44,7 +44,7 @@ module.exports.createMovie = (req, res, next) => {
     .then((movie) => res.send(movie))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        return next(new NotFoundError('Invalid data when post card'));
+        return next(new NotFoundError('Invalid data when post movie'));
       }
 
       return next(err);
