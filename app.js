@@ -44,7 +44,7 @@ app.use(limiter);
 app.use(cors({
   origin: [
     'http://localhost:3001',
-    // 'https://',
+    'https://krivo.nomoredomains.rocks',
   ],
   credentials: true,
   maxAge: 30,
