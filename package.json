@@ -1,7 +1,7 @@
 {
-  "name": "express-mesto-gha",
+  "name": "movies-explorer-api",
   "version": "1.0.0",
-  "description": "server version for the project MESTO",
+  "description": "server for the project movies",
   "main": "app.js",
   "scripts": {
     "lint": "npx eslint .",
