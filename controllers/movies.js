@@ -8,7 +8,7 @@ const {
 
 module.exports.getAllMovies = (req, res, next) => {
   movieSchema
-    .find({})
+    .find({ owner: req.user._id })
     .then((movies) => res.send(movies.reverse()))
     .catch(next);
 };
