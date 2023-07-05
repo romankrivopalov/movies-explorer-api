@@ -108,6 +108,10 @@ module.exports.updateUser = (req, res, next) => {
   userSchema.findByIdAndUpdate(req.user._id, { name, email }, { new: true, runValidators: true })
     .then((user) => res.send(user))
     .catch((err) => {
+      if (err.code === 11000) {
+        return next(new ConflictError('A user with such a email is already registered'));
+      }
+
       if (err.name === 'CastError' || err.name === 'ValidationError') {
         return next(new NotFoundError('Invalid user id passed'));
       }
